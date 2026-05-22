@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+  font-family: 'DM Sans';
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+#cursor {
+  height: 14px;
+  width: 14px;
+  background-color: rgb(12, 8, 8);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: 9999;
+  pointer-events: none;
+
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+
+
+  transform: translate(-50%, -50%);
+}
+
+body.dark {
+  background-color: #0b0b0b;
+  color: white;
+}
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark a {
+  color: white;
+}
+
+body.dark #cursor {
+  background-color: white;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
