@@ -175,7 +175,10 @@ function Cards() {
       sm:text-[12px]
       md:text-[13px]
       lg:text-[20px]
+      2xl:text-[30px]
       font-bold
+      md:ml-5
+      2xl:ml-15
       tracking-[-0.03em]
       text-black
       text-center
@@ -191,10 +194,15 @@ function Cards() {
         rounded-sm
         bg-black
         px-2.5
+        2xl:px-4
         py-1
-        text-[10px]
+        2xl:py-2
+        2xl:mr-15
+        text-[11px]
+        2xl:text-[15px]
         sm:text-[11px]
-        font-semibold
+        font-medium
+        md:mr-5
         uppercase
         tracking-wider
         text-white

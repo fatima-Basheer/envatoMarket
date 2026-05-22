@@ -43,7 +43,7 @@ function TemplatesSection() {
   useGSAP(() => {
     gsap.fromTo(
       ".letter",
-      { x: -30, opacity: 0.2 },
+      { x: -40, opacity: 0.2 },
       {
         x: 0,
         opacity: 1,

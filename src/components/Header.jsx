@@ -33,13 +33,13 @@ function Header({ openMenu }) {
           {" "}
           <img src="./cube.svg" className="h-10" /> <span>Orisa</span>{" "}
         </div>{" "}
-        <div className="hidden items-center gap-8 lg:flex">
+        <div className="hidden items-center gap-3 lg:flex">
           {" "}
           {navlinks.map((link, index) => (
 <a
   key={index}
   href="#"
-  className="group relative font-semibold text-[15px] text-[#333] flex justify-between items-end cursor-pointer pb-[6px] pl-3 pr-2"
+  className="group relative font-semibold text-[16px] text-[#222] flex justify-between items-end cursor-pointer pl-3 pr-2"
 >
   {link} <RiArrowRightSFill />
 
