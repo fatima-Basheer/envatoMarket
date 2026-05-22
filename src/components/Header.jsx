@@ -36,14 +36,16 @@ function Header({ openMenu }) {
         <div className="hidden items-center gap-8 lg:flex">
           {" "}
           {navlinks.map((link, index) => (
-            <a
-              key={index}
-              href="#"
-              className="font-semibold text-[15px] text-[#333] flex justify-between items-end cursor-pointer hover: border-b-0 border-black"
-            >
-              {" "}
-              {link} <RiArrowRightSFill />{" "}
-            </a>
+<a
+  key={index}
+  href="#"
+  className="group relative font-semibold text-[15px] text-[#333] flex justify-between items-end cursor-pointer pb-[6px] pl-3 pr-2"
+>
+  {link} <RiArrowRightSFill />
+
+
+  <div className="absolute left-0 bottom-0 h-[1px] w-0 bg-black group-hover:w-full transition-all duration-300"></div>
+</a>
           ))}{" "}
         </div>{" "}
       </div>{" "}

@@ -14,6 +14,22 @@ function App() {
   const [offersOpen, setOffersOpen] = useState(false);
   const cursorRef = useRef();
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   useEffect(() => {
     const cursor = cursorRef.current;
 
