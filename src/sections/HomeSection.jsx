@@ -142,7 +142,7 @@ useGSAP(() => {
   
   <video
     src="./video-1.mp4"
-    className="h-36 w-[250px] lg:h-28 lg:w-[160px] rounded-t-lg object-cover"
+    className="h-36 w-[250px] lg:h-28 lg:w-[160px]  2xl:h-42 2xl:w-[260px] rounded-t-lg object-cover"
     autoPlay
     muted
     loop

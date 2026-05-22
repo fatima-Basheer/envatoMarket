@@ -135,7 +135,7 @@ useGSAP(() => {
               </span>
             </div>
 
-            <h1 className={`text-[42px] font-semibold leading-[1.1] tracking-[-0.05em] inline-block`}>
+            <h1 className={`text-[42px] text-black font-semibold leading-[1.1] tracking-[-0.05em] inline-block`}>
 
               {"Go live instantly ".split("").map((char, i) => (
                 <span key={i} className="letter inline-block">

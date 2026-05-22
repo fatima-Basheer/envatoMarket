@@ -14,22 +14,6 @@ function App() {
   const [offersOpen, setOffersOpen] = useState(false);
   const cursorRef = useRef();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   useEffect(() => {
     const cursor = cursorRef.current;
 
@@ -60,10 +44,12 @@ function App() {
       window.removeEventListener("mousemove", moveCursor);
     };
   }, []);
-
+        
   return (
     <>
+
       <div id="cursor" ref={cursorRef}></div>
+  
       <HomeSection
         menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}

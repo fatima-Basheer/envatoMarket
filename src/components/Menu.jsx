@@ -140,26 +140,22 @@ function Menu({ isOpen, onClose }) {
             </div>
           ))}
         </div>
-<Button
-  variant="orange"
-  className="px-6 py-3 group overflow-hidden w-full sm:block lg:hidden 2xl:block"
->
-  <span className="relative block h-10 w-full overflow-hidden">
+        <Button
+          variant="orange"
+          className="px-6 py-3 group overflow-hidden w-full sm:block lg:hidden 2xl:block"
+        >
+          <span className="relative block h-10 w-full overflow-hidden">
+            <span className="absolute inset-0 flex items-center justify-center gap-2 transition-transform duration-300 group-hover:-translate-y-full tracking-[-0.05em]">
+              ONLY $15 - GET IT NOW
+              <HiArrowUpRight className="text-xl" />
+            </span>
 
-
-    <span className="absolute inset-0 flex items-center justify-center gap-2 transition-transform duration-300 group-hover:-translate-y-full tracking-[-0.05em]">
-      ONLY $15 - GET IT NOW
-      <HiArrowUpRight className="text-xl" />
-    </span>
-
-
-    <span className="absolute inset-0 flex items-center justify-center gap-2 translate-y-full transition-transform duration-300 group-hover:translate-y-0 tracking-[-0.05em]">
-      ONLY $15 - GET IT NOW
-      <HiArrowUpRight className="text-xl" />
-    </span>
-
-  </span>
-</Button>
+            <span className="absolute inset-0 flex items-center justify-center gap-2 translate-y-full transition-transform duration-300 group-hover:translate-y-0 tracking-[-0.05em]">
+              ONLY $15 - GET IT NOW
+              <HiArrowUpRight className="text-xl" />
+            </span>
+          </span>
+        </Button>
       </div>
     </div>
   );
