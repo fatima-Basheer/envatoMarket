@@ -17,9 +17,9 @@ function StickyMenuButton({ onClick }) {
   return (
     <button
       onClick={onClick}
-      className="fixed top-25 right-6 z-50 bg-white text-black px-6 py-3.5 rounded-2xl shadow-lg tracking-wide flex font-medium  transition border-1 border-gray-300"
+      className="fixed top-25 right-6 z-50 bg-white dark:bg-black/75 text-black dark:text-white px-6 py-4 rounded-2xl shadow-lg tracking-wide flex font-medium transition border-1 border-gray-300 dark:border-white/10 text-[16px]"
     >
-      MENU <ImMenu className="ml-2 text-xl " />
+      MENU <ImMenu className="ml-2 text-xl dark:text-white" />
     </button>
   );
 }

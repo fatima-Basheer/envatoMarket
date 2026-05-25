@@ -9,9 +9,9 @@ import MovingText from "../components/MovingText";
 const images = [
   { id: 1, src: "/avatar-1.webp" },
   { id: 2, src: "/avatar-2.webp" },
-  { id: 3, src: "/avatar-3.webp"  },
-  { id: 4, src: "/avatar-4.webp"  },
-  { id: 5, src: "/avatar-5.webp"  },
+  { id: 3, src: "/avatar-3.webp" },
+  { id: 4, src: "/avatar-4.webp" },
+  { id: 5, src: "/avatar-5.webp" },
 ];
 
 gsap.registerPlugin(ScrollTrigger);
@@ -21,104 +21,107 @@ function WebPagesSection() {
   const textRef = useRef();
   const imageRef = useRef();
 
-
-  useGSAP(() => {
-    gsap.fromTo(
-      ".letter",
-      {
-        x: -20,
-        opacity: 0.7,
-        color: "#9ca3af",
-      },
-      {
-        x: 0,
-        opacity: 1,
-        color: "#000000",
-        stagger: 0.03,
-        duration: 1.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 75%",
-          end: "top 30%",
-          scrub: 2,
+  useGSAP(
+    () => {
+      const isDark = document.documentElement.classList.contains("dark");
+      gsap.fromTo(
+        ".letter",
+        {
+          x: -20,
+          opacity: 0.7,
+          color: isDark ? "#6b7280" : "#9ca3af",
         },
-      }
-    );
-  }, { scope: container });
-
-  useGSAP(() => {
-    gsap.fromTo(
-      textRef.current,
-      {
-        y: 30,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.9,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 85%",
-          end: "top 55%",
-          scrub: 1.5,
-        },
-      }
-    );
-  }, { scope: container });
-
-useGSAP(() => {
-  const items = gsap.utils.toArray(".img-item");
-
-  let lastScroll = 0;
-
-  ScrollTrigger.create({
-    trigger: imageRef.current,
-    start: "top bottom",
-    end: "bottom top",
-    onUpdate: (self) => {
-      const direction = self.direction; 
-  
-
-      items.forEach((item, i) => {
-        const isEven = i % 2 === 0;
-
-        let y = 0;
-
-        if (direction === 1) {
-        
-          y = isEven ? 5 :-5
-        } else {
-          
-          y = isEven ? -5 : 5;
-        }
-
-        gsap.to(item, {
-          y,
-          duration: 0.8,
+        {
+          x: 0,
+          opacity: 1,
+          color: isDark ? "#ffffff" : "#000000",
+          stagger: 0.03,
+          duration: 1.1,
           ease: "power3.out",
-          overwrite: true,
-        });
+          scrollTrigger: {
+            trigger: container.current,
+            start: "top 75%",
+            end: "top 30%",
+            scrub: 2,
+          },
+        },
+      );
+    },
+    { scope: container },
+  );
+
+  useGSAP(
+    () => {
+      gsap.fromTo(
+        textRef.current,
+        {
+          y: 30,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: container.current,
+            start: "top 85%",
+            end: "top 55%",
+            scrub: 1.5,
+          },
+        },
+      );
+    },
+    { scope: container },
+  );
+
+  useGSAP(
+    () => {
+      const items = gsap.utils.toArray(".img-item");
+
+      let lastScroll = 0;
+
+      ScrollTrigger.create({
+        trigger: imageRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        onUpdate: (self) => {
+          const direction = self.direction;
+
+          items.forEach((item, i) => {
+            const isEven = i % 2 === 0;
+
+            let y = 0;
+
+            if (direction === 1) {
+              y = isEven ? 5 : -5;
+            } else {
+              y = isEven ? -5 : 5;
+            }
+
+            gsap.to(item, {
+              y,
+              duration: 0.8,
+              ease: "power3.out",
+              overwrite: true,
+            });
+          });
+        },
       });
     },
-  });
-}, { scope: imageRef });
-
+    { scope: imageRef },
+  );
 
   return (
-    <div className="
-      h-auto w-full border-b border-gray-300
-      bg-[repeating-linear-gradient(to_right,#d1d5db_0px,#d1d5db_1px,transparent_1px,transparent_80px)]
-      sm:bg-[repeating-linear-gradient(to_right,#d1d5db_0px,#d1d5db_1px,transparent_1px,transparent_120px)]
-      lg:bg-[repeating-linear-gradient(to_right,#d1d5db_0px,#d1d5db_1px,transparent_1px,transparent_200px)]
-    ">
-
-    
+    <div
+      className="
+  h-auto w-full border-b border-gray-300
+  bg-[repeating-linear-gradient(to_right,var(--grid-color)_0px,var(--grid-color)_1px,transparent_1px,transparent_80px)]
+  sm:bg-[repeating-linear-gradient(to_right,var(--grid-color)_0px,var(--grid-color)_1px,transparent_1px,transparent_120px)]
+  lg:bg-[repeating-linear-gradient(to_right,var(--grid-color)_0px,var(--grid-color)_1px,transparent_1px,transparent_200px)]
+"
+    >
       <div className="flex flex-col lg:flex-row justify-between gap-10 py-4 px-6 sm:py-6 sm:px-6 md:py-8 md:px-8 lg:py-10 lg:px-28 xl:py-10">
-
-      
         <div ref={container} className="w-full mt-32 ">
           <div>
             <div className="flex font-medium mb-2">
@@ -135,24 +138,29 @@ useGSAP(() => {
               </span>
             </div>
 
-            <h1 className={`text-[42px] text-black font-semibold leading-[1.1] tracking-[-0.05em] inline-block`}>
-
+            <h1
+              className={`text-[42px] text-black dark:text-white font-semibold leading-[1.1] tracking-[-0.05em] inline-block`}
+            >
               {"Go live instantly ".split("").map((char, i) => (
-                <span key={i} className="letter inline-block">
+                <span key={i} className="letter inline-block ">
                   {char === " " ? "\u00A0" : char}
                 </span>
               ))}
 
-              <span  className="m">
+              <span className="m">
                 {"with".split("").map((char, i) => (
-                  <span style={{ fontFamily: "Ephesis" }} key={i} className="letter inline-block font-light">
+                  <span
+                    style={{ fontFamily: "Ephesis" }}
+                    key={i}
+                    className="letter inline-block font-light "
+                  >
                     {char}
                   </span>
                 ))}
               </span>
 
               {" 75+".split("").map((char, i) => (
-                <span key={i} className="letter inline-block">
+                <span key={i} className="letter inline-block ">
                   {char === " " ? "\u00A0" : char}
                 </span>
               ))}
@@ -160,7 +168,7 @@ useGSAP(() => {
               <div className="w-full"></div>
 
               {"pre-designed web pages.".split("").map((char, i) => (
-                <span key={i} className="letter inline-block">
+                <span key={i} className="letter inline-block ">
                   {char === " " ? "\u00A0" : char}
                 </span>
               ))}
@@ -168,35 +176,35 @@ useGSAP(() => {
           </div>
         </div>
 
-    
         <div ref={imageRef} className="max-w-[380px] w-full mt-15">
           <div className="flex gap-3 items-start  sm:items-end flex-wrap">
-
-      {images.map((image, index) => (
-  <div
-    key={image.id}
-    className="img-item bg-gray-100 p-1 will-change-transform"
-    data-index={index}
-  >
-    <img
-      src={image.src}
-      alt=""
-      className="h-11 w-12 md:h-12 md:w-14object-cover block"
-    />
-  </div>
-))}
+            {images.map((image, index) => (
+              <div
+                key={image.id}
+                className="img-item bg-gray-100 dark:bg-[#111] p-1 will-change-transform"
+                data-index={index}
+              >
+                <img
+                  src={image.src}
+                  alt=""
+                  className="h-11 w-12 md:h-12 md:w-14 object-cover block"
+                />
+              </div>
+            ))}
           </div>
 
-          <p ref={textRef} className="font-medium text-[22px] mt-5 leading-[1.2]">
-            Browse our stunning library of pre-made templates.
-            Take full control by swapping sections and customizing
-            elements to create a unique website that stands out.
+          <p
+            ref={textRef}
+            className="font-medium text-[22px] mt-5 leading-[1.2]"
+          >
+            Browse our stunning library of pre-made templates. Take full control
+            by swapping sections and customizing elements to create a unique
+            website that stands out.
           </p>
         </div>
       </div>
-        <Cards />
-         <MovingText/>
-  
+      <Cards />
+      <MovingText />
     </div>
   );
 }

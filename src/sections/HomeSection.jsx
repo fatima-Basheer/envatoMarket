@@ -31,32 +31,40 @@ const data = [
   },
 ];
 
-function HomeSection({ menuOpen, setMenuOpen, offersOpen, setOffersOpen }) {
+function HomeSection({
+  menuOpen,
+  setMenuOpen,
+  offersOpen,
+  setOffersOpen,
+  setHideCursor,
+}) {
   const badgeRef = useRef(null);
   const headingRef = useRef(null);
-useGSAP(() => {
-  gsap.fromTo(
-    ".heading-letter",
-    {
-      x: -30,
-      opacity: 0.2,
+  useGSAP(
+    () => {
+      gsap.fromTo(
+        ".heading-letter",
+        {
+          x: -30,
+          opacity: 0.2,
+        },
+        {
+          x: 0,
+          opacity: 1,
+          stagger: 0.03,
+          duration: 1.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 90%",
+            end: "bottom 30%",
+            scrub: 1.5,
+          },
+        },
+      );
     },
-    {
-      x: 0,
-      opacity: 1,
-      stagger: 0.03,
-      duration: 1.1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: headingRef.current,
-        start: "top 90%",
-        end: "bottom 30%",
-        scrub: 1.5,
-
-      },
-    }
+    { scope: headingRef },
   );
-}, { scope: headingRef });
   useGSAP(() => {
     const ctx = gsap.context(() => {
       gsap.delayedCall(2.2, () => {
@@ -114,7 +122,10 @@ useGSAP(() => {
     <>
       <Nav />
       <DiscountNav />
-      <Header openMenu={() => setOffersOpen(true)} />
+      <Header
+        openMenu={() => setOffersOpen(true)}
+        setHideCursor={setHideCursor}
+      />
       {offersOpen && <Offers onClose={() => setOffersOpen(false)} />}
 
       <StickyMenuButton
@@ -138,43 +149,36 @@ useGSAP(() => {
 
         <div className="mt-10 w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 items-center">
           <div className="hidden md:block w-fit">
-    <div className="bg-[#545453] p-3 rounded-xl inline-block group cursor-pointer">
-  
-  <video
-    src="./video-1.mp4"
-    className="h-36 w-[250px] lg:h-28 lg:w-[160px]  2xl:h-42 2xl:w-[260px] rounded-t-lg object-cover"
-    autoPlay
-    muted
-    loop
-    playsInline
-  />
+            <div className="bg-[#545453] p-3 rounded-xl inline-block group cursor-pointer">
+              <video
+                src="./video-1.mp4"
+                className="h-36 w-[250px] lg:h-28 lg:w-[160px]  2xl:h-42 2xl:w-[260px] rounded-t-lg object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
 
-  <div className="mt-3 overflow-hidden h-6">
-    
-    <div className="flex flex-col transition-transform duration-300 ease-out group-hover:-translate-y-6">
-      
+              <div className="mt-3 overflow-hidden h-6">
+                <div className="flex flex-col transition-transform duration-300 ease-out group-hover:-translate-y-6">
+                  <div className="flex items-center justify-between h-6">
+                    <span className="font-semibold text-white leading-[1.1] tracking-[-0.03em]">
+                      Advanced Features
+                    </span>
 
-      <div className="flex items-center justify-between h-6">
-        <span className="font-semibold text-white leading-[1.1] tracking-[-0.03em]">
-          Advanced Features
-        </span>
+                    <HiArrowUpRight className="text-white text-lg" />
+                  </div>
 
-        <HiArrowUpRight className="text-white text-lg" />
-      </div>
+                  <div className="flex items-center justify-between h-6">
+                    <span className="font-semibold text-white leading-[1.1] tracking-[-0.03em]">
+                      Advanced Features
+                    </span>
 
-
-      <div className="flex items-center justify-between h-6">
-        <span className="font-semibold text-white leading-[1.1] tracking-[-0.03em]">
-          Advanced Features
-        </span>
-
-        <HiArrowUpRight className="text-white text-lg" />
-      </div>
-
-    </div>
-
-  </div>
-</div>
+                    <HiArrowUpRight className="text-white text-lg" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="md:col-span-2 lg:col-span-2 flex flex-col items-center text-center w-full">
@@ -196,33 +200,33 @@ useGSAP(() => {
             </div>
 
             <h1
-  ref={headingRef}
-  className="text-white text-4xl md:text-[50px] 2xl:text-[70px] font-semibold leading-[1.1] mt-2 tracking-[-0.05em]"
->
-  {"Redefine Digital Creativity".split("").map((char, i) => (
-    <span key={i} className="heading-letter inline-block">
-      {char === " " ? "\u00A0" : char}
-    </span>
-  ))}
+              ref={headingRef}
+              className="text-white text-4xl md:text-[50px] 2xl:text-[70px] font-semibold leading-[1.1] mt-2 tracking-[-0.05em]"
+            >
+              {"Redefine Digital Creativity".split("").map((char, i) => (
+                <span key={i} className="heading-letter inline-block">
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
 
-  <br />
+              <br />
 
-  {"with ".split("").map((char, i) => (
-    <span
-      key={i}
-      className="heading-letter inline-block"
-      style={{ fontFamily: "Ephesis", fontWeight:300 }}
-    >
-      {char === " " ? "\u00A0" : char}
-    </span>
-  ))}
+              {"with ".split("").map((char, i) => (
+                <span
+                  key={i}
+                  className="heading-letter inline-block"
+                  style={{ fontFamily: "Ephesis", fontWeight: 300 }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
 
-  {"Orisa template.".split("").map((char, i) => (
-    <span key={i} className="heading-letter inline-block">
-      {char === " " ? "\u00A0" : char}
-    </span>
-  ))}
-</h1>
+              {"Orisa template.".split("").map((char, i) => (
+                <span key={i} className="heading-letter inline-block">
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+            </h1>
 
             <div className="flex flex-col md:flex-row items-center gap-6 mt-10 md:mt-16">
               <Button

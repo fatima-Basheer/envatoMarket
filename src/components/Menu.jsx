@@ -11,28 +11,32 @@ function Menu({ isOpen, onClose }) {
   const panelRef = useRef();
   const linksRef = useRef([]);
   const headerRef = useRef();
-
   useGSAP(() => {
     const cleanLinks = linksRef.current.filter(Boolean);
+
+    const openEase = "power3.out";
+    const closeEase = "power2.inOut";
 
     if (!isOpen) {
       const tl = gsap.timeline();
 
       tl.to(cleanLinks, {
         opacity: 0,
-        y: -10,
+        y: -8,
         duration: 0.25,
-        ease: "power2.inOut",
-        stagger: 0.04,
+        ease: closeEase,
+        stagger: 0.02,
+        overwrite: true,
       });
 
       tl.to(
         headerRef.current,
         {
           opacity: 0,
-          y: -10,
+          y: -8,
           duration: 0.2,
-          ease: "power2.inOut",
+          ease: closeEase,
+          overwrite: true,
         },
         "-=0.1",
       );
@@ -42,8 +46,10 @@ function Menu({ isOpen, onClose }) {
         {
           clipPath: "circle(0% at 92% 8%)",
           scale: 0.98,
-          duration: 1.2,
+          duration: 1.1,
           ease: "expo.inOut",
+          overwrite: true,
+          clearProps: "transform",
         },
         "-=0.05",
       );
@@ -55,12 +61,13 @@ function Menu({ isOpen, onClose }) {
 
     gsap.set(panelRef.current, {
       clipPath: "circle(0% at 92% 8%)",
-      scale: 0.96,
+      scale: 0.98,
+      transformOrigin: "top right",
     });
 
     gsap.set(headerRef.current, {
       opacity: 0,
-      y: -10,
+      y: -8,
     });
 
     gsap.set(cleanLinks, {
@@ -70,8 +77,9 @@ function Menu({ isOpen, onClose }) {
 
     tl.to(panelRef.current, {
       clipPath: "circle(140% at 92% 8%)",
-      duration: 1.4,
+      duration: 1.25,
       ease: "expo.inOut",
+      overwrite: true,
     });
 
     tl.to(
@@ -80,9 +88,10 @@ function Menu({ isOpen, onClose }) {
         opacity: 1,
         y: 0,
         duration: 0.5,
-        ease: "power3.out",
+        ease: openEase,
+        overwrite: true,
       },
-      "-=0.7",
+      "-=0.6",
     );
 
     tl.to(
@@ -90,19 +99,19 @@ function Menu({ isOpen, onClose }) {
       {
         opacity: 1,
         y: 0,
-        duration: 0.65,
-        ease: "expo.out",
-        stagger: 0.08,
+        duration: 0.55,
+        ease: openEase,
+        stagger: 0.06,
         force3D: true,
+        overwrite: true,
       },
-      "-=0.3",
+      "-=0.4",
     );
   }, [isOpen]);
-
   return (
     <div
       ref={panelRef}
-      className="fixed top-20 right-6 bottom-5 w-full  md:w-[42%] rounded-2xl bg-white z-50 shadow-2xl overflow-hidden"
+      className="fixed top-20 right-6 bottom-5 w-full  md:w-[43%] rounded-2xl bg-white dark:bg-black/95  z-50 shadow-2xl overflow-hidden"
       style={{
         clipPath: "circle(0% at 92% 8%)",
       }}
@@ -111,11 +120,11 @@ function Menu({ isOpen, onClose }) {
         <div ref={headerRef} className="flex justify-between items-center">
           <div className="flex items-center text-xl font-bold gap-2">
             <img src="./cube.svg" className="h-10" />
-            <span>Orisa</span>
+            <span className="text-black dark:text-white">Orisa</span>
           </div>
 
           <button onClick={onClose}>
-            <RxCross1 className="text-3xl transition-transform duration-300 hover:rotate-[-90deg]" />
+            <RxCross1 className="text-3xl transition-transform duration-300 hover:rotate-[-90deg] text-black dark:text-white" />
           </button>
         </div>
 
@@ -131,12 +140,12 @@ function Menu({ isOpen, onClose }) {
               <a
                 href="#"
                 onClick={onClose}
-                className="text-[42px] leading-[0.5] tracking-[-0.05em] font-semibold text-black/90 hover:opacity-60"
+                className="text-[42px] leading-[0.5] tracking-[-0.05em] font-semibold text-black/90 dark:text-white hover:opacity-60"
               >
                 {link}
               </a>
 
-              <IoAdd className="text-[28px]" />
+              <IoAdd className="text-[28px] text-black/90 dark:text-white" />
             </div>
           ))}
         </div>

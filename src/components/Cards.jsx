@@ -107,6 +107,7 @@ function Cards() {
                 overflow-hidden
                 rounded-2xl
                 bg-gray-300
+                dark:bg-[#222]
                 shadow-[0_10px_35px_rgba(0,0,0,0.12)]
                 hover:-translate-y-1
                 duration-500
@@ -122,10 +123,10 @@ function Cards() {
                     z-20
                     rotate-[-8deg]
                     rounded-sm
-                    bg-yellow-500
-                    px-3
-                    py-1
-                    text-[10px]
+                    bg-[#f59e0b]
+                    px-1.5
+                    py-0.5
+                    text-[12px]
                     sm:text-[11px]
                     font-semibold
                     tracking-wider
@@ -182,6 +183,7 @@ function Cards() {
       2xl:ml-15
       tracking-[-0.03em]
       text-black
+      dark:text-white
       text-center
     "
               >
@@ -189,24 +191,27 @@ function Cards() {
               </h3>
 
               {item.mode && (
-      <div
-        className="
+                <div
+                  className="
         rotate-[-8deg]
         rounded-sm
         bg-black
-        px-2.5
-        2xl:px-4
-        py-1
-        2xl:py-2
+        dark:bg-white
+        px-1.5
+        2xl:px-3
+        py-0.5
+        2xl:py-1.5
         2xl:mr-15
-        text-[11px]
-        2xl:text-[15px]
-        sm:text-[11px]
+        text-[12px]
+        2xl:text-[16px]
+        sm:text-[12px]
         font-medium
         md:mr-5
         uppercase
         tracking-wider
         text-white
+        dark:text-black
+        tracking-[-0.05em]
       "
                 >
                   {item.mode}

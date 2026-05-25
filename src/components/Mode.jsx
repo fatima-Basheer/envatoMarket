@@ -1,25 +1,30 @@
-import React from 'react'
-import { IoMdMoon } from "react-icons/io";
-import { IoMdSunny } from "react-icons/io";
-import { useState,useEffect } from 'react';
+import React, { useEffect, useState } from "react";
+import { IoMdMoon, IoMdSunny } from "react-icons/io";
+
 function Mode() {
-    const [darkMode, setDarkMode] = useState(false);
-  
-    const toggleTheme = () => {
-      setDarkMode((prev) => !prev);
-    };
-    useEffect(() => {
-      if (darkMode) {
-        document.body.classList.add("dark");
-      } else {
-        document.body.classList.remove("dark");
-      }
-    }, [darkMode]);
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
-        <div className="text-xl cursor-pointer" onClick={toggleTheme}>
-              {darkMode ? <IoMdSunny /> : <IoMdMoon />}
-            </div>
-  )
+    <div className="text-2xl cursor-pointer" onClick={toggleTheme}>
+      {darkMode ? <IoMdSunny /> : <IoMdMoon />}
+    </div>
+  );
 }
 
-export default Mode
+export default Mode;

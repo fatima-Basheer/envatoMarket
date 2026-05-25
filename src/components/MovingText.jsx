@@ -30,9 +30,9 @@ function MovingText() {
     <section ref={sectionRef} className="relative pt-32  overflow-hidden">
       <div ref={contentRef} className="will-change-transform">
         <div className="flex justify-center gap-4 text-black/90">
-          <PiStarFourFill className="text-[55px]" />
+          <PiStarFourFill className="text-[55px] dark:text-white" />
 
-          <div className="text-[40px] xl: text-[42px] font-semibold tracking-[-0.05em] leading-[1.3]">
+          <div className="text-[40px] xl: text-[42px] font-semibold tracking-[-0.05em] leading-[1.3] dark:text-white">
             <p>
               Elevate your web <br />
               <span>
@@ -50,7 +50,7 @@ function MovingText() {
           </div>
         </div>
 
-        <div className="flex justify-center mt-5 mr-2">
+        <div className="flex justify-center mt-4 mr-2">
           <Button
             variant="orange"
             className="px-6 py-3 group overflow-hidden rounded-full"

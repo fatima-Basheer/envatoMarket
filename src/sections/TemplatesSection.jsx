@@ -31,7 +31,7 @@ const icons = [
   { icon: "/html.png", name: "CSS 3" },
   { icon: "/html.png", name: "Bootstrap" },
   { icon: "/html.png", name: "Browser Sync" },
-  { icon: "/html.png", name: "Google Fonts" },
+
 ];
 
 function TemplatesSection() {
@@ -53,7 +53,7 @@ function TemplatesSection() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 90%",
-          end: "top 20%",
+          end: "top 10%",
           scrub: 1.5,
         },
       },
@@ -136,17 +136,17 @@ function TemplatesSection() {
               className="absolute z-20 inline-flex items-center gap-2 bg-black text-white px-8 py-5 rounded-full border border-white/10"
             >
               <img src={icon.icon} alt={icon.name} className="w-6 h-6" />
-              <span className="text-sm font-medium">{icon.name}</span>
+              <span className=" font-medium text-xl">{icon.name}</span>
             </div>
           ))}
         </div>
 
-        <div className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 py-14 md:py-20 flex flex-col gap-16">
+        <div className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-36 py-14 md:py-20 flex flex-col gap-10">
           <div
-            ref={headRef}
+        
             className="flex flex-col lg:flex-row justify-between items-center gap-10 "
           >
-            <h1 className="text-white text-[54px] sm:text-[64px] lg:text-[90px] font-semibold tracking-[-0.05em] leading-[1.05] w-full lg:w-[60%]">
+            <h1 ref={headRef} className="text-white text-[54px] sm:text-[64px] lg:text-[90px] font-semibold tracking-[-0.05em] leading-[1.05] 2xl:leading-[1.1] w-full lg:w-[60%] 2xl:mb-20 ">
               {"Launch Your Vision".split("").map((char, i) => (
                 <span key={i} className="letter inline-block">
                   {char === " " ? "\u00A0" : char}
@@ -182,7 +182,7 @@ function TemplatesSection() {
               ref={imageRef}
               src="/demo-screen.webp"
               alt="Demo"
-              className="w-full max-w-[350px] object-contain mt-20"
+              className="w-full max-w-[350px] 2xl:max-w-[500px] 2xl:h-[520px] object-contain mt-30"
             />
           </div>
           <div ref={dataRef} className="flex flex-col gap-3">

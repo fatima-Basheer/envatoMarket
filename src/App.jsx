@@ -12,8 +12,9 @@ function App() {
   const [showMenu, setShowMenu] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [offersOpen, setOffersOpen] = useState(false);
+  const [hideCursor, setHideCursor] = useState(false);
   const cursorRef = useRef();
-
+  const [isDark, setIsDark] = useState(false);
   useEffect(() => {
     const cursor = cursorRef.current;
 
@@ -44,22 +45,45 @@ function App() {
       window.removeEventListener("mousemove", moveCursor);
     };
   }, []);
-        
-  return (
-    <>
 
-      <div id="cursor" ref={cursorRef}></div>
-  
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    };
+
+    checkTheme();
+
+    window.addEventListener("storage", checkTheme);
+    const interval = setInterval(checkTheme, 200);
+
+    return () => {
+      window.removeEventListener("storage", checkTheme);
+      clearInterval(interval);
+    };
+  }, []);
+  return (
+    <div className="bg-white dark:bg-black text-black dark:text-white">
+      <div
+        id="cursor"
+        ref={cursorRef}
+        style={{
+          backgroundColor: isDark ? "#ffffff" : "#0c0808",
+          opacity: hideCursor ? 0 : 1,
+          transition: "opacity 0.2s ease",
+        }}
+      />
+
       <HomeSection
         menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}
         offersOpen={offersOpen}
         setOffersOpen={setOffersOpen}
+        setHideCursor={setHideCursor}
       />
-        
+
       <WebPagesSection />
-    <TemplatesSection />
-    </>
+      <TemplatesSection />
+    </div>
   );
 }
 

@@ -4,7 +4,7 @@ import Stairs from "./components/Stairs.jsx";
 import { useState } from "react";
 import "./index.css";
 import App from "./App.jsx";
-
+import Mode from "./components/Mode.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Stairs>
